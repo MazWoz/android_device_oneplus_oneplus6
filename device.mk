@@ -21,8 +21,9 @@
 #
 $(call inherit-product, vendor/oneplus/oneplus6/device-vendor.mk)
 $(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
-$(call inherit-product, vendor/omni/config/phone-xxhdpi-4096-dalvik-heap.mk)
-$(call inherit-product, vendor/omni/config/phone-xxhdpi-2048-hwui-memory.mk)
+$(call inherit-product, vendor/du/config/common_full_phone.mk)
+$(call inherit-product, vendor/extras/configs/phone-xxhdpi-4096-dalvik-heap.mk)
+$(call inherit-product, vendor/extras/configs/phone-xxhdpi-2048-hwui-memory.mk)
 
 #from build treble includes
 PRODUCT_COPY_FILES += \
@@ -61,12 +62,8 @@ PRODUCT_PACKAGES += \
     update_engine_sideload \
     update_verifier
 
-# Boot control
-PRODUCT_PACKAGES_DEBUG += \
-    bootctl
 
 PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.sdm845 \
     libcutils \
     libgptutils \
     libz \
@@ -75,7 +72,7 @@ PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
 
 PRODUCT_PACKAGES += \
-    omni_charger_res_images \
+    #omni_charger_res_images \
     animation.txt \
     font_charger.png
 
@@ -234,9 +231,6 @@ PRODUCT_PACKAGES += \
     libandroid_net
 
 PRODUCT_PACKAGES += \
-    DeviceParts
-
-PRODUCT_PACKAGES += \
     vndk_package
 
 PRODUCT_PACKAGES += \
@@ -277,8 +271,8 @@ PRODUCT_PACKAGES += android.hardware.health@2.0-service.oneplus6
 DEVICE_FRAMEWORK_MANIFEST_FILE += \
     system/libhidl/vintfdata/manifest_healthd_exclude.xml
 
-PRODUCT_PACKAGES += \
-    OmniDisplayManager
+#PRODUCT_PACKAGES += \
+    #OmniDisplayManager
 
 # Temporary handling
 #
