@@ -18,6 +18,7 @@
 # device-specific aspects (drivers) with a device-agnostic
 # product configuration (apps).
 #
+
 BOARD_PATH := device/oneplus/oneplus6
 
 PRODUCT_FULL_TREBLE := true
@@ -44,7 +45,8 @@ BOARD_USES_RECOVERY_AS_BOOT := true
 TARGET_NO_BOOTLOADER := true
 TARGET_OTA_ASSERT_DEVICE := OnePlus6
 TARGET_KERNEL_VERSION := 4.9
-TARGET_KERNEL_CLANG_COMPILE := false
+TARGET_KERNEL_CLANG_COMPILE := true
+TARGET_KERNEL_CLANG_VERSION := 8.0.6
 TARGET_BOOTLOADER_BOARD_NAME := sdm845
 #TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
@@ -56,7 +58,7 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno630
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
-TARGET_CPU_ABI2 :=
+TARGET_CPU_ABI2 := 
 TARGET_CPU_VARIANT := kryo300
 
 TARGET_2ND_ARCH := arm
@@ -86,8 +88,8 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 #TARGET_KERNEL_APPEND_DTB := true
-TARGET_KERNEL_SOURCE := kernel/oneplus/sdm845
-TARGET_KERNEL_CONFIG := omni_oneplus6_defconfig
+TARGET_KERNEL_SOURCE := kernel/oneplus/op6
+TARGET_KERNEL_CONFIG := flash_defconfig
 BOARD_KERNEL_SEPARATED_DTBO := true
 
 # partitions
@@ -111,6 +113,8 @@ TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
 TARGET_USES_MKE2FS := true
 
 # Generic AOSP image always requires separate vendor.img
+PRODUCT_FULL_TREBLE_OVERRIDE := true
+PRODUCT_VENDOR_MOVE_ENABLED := true
 TARGET_COPY_OUT_VENDOR := vendor
 
 #Enable DRM plugins 64 bit compilation
@@ -223,13 +227,13 @@ TARGET_SYSTEM_PROP := $(BOARD_PATH)/system.prop
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
 # selinux
-include device/qcom/sepolicy/sepolicy.mk
-include vendor/du/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(BOARD_PATH)/sepolicy/qcom
-BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(BOARD_PATH)/sepolicy/public
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(BOARD_PATH)/sepolicy/private
+#include device/qcom/sepolicy/sepolicy.mk
+#include vendor/du/sepolicy/sepolicy.mk
+#BOARD_SEPOLICY_DIRS += $(BOARD_PATH)/sepolicy/qcom
+#BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(BOARD_PATH)/sepolicy/public
+#BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(BOARD_PATH)/sepolicy/private
 
-BOARD_SECCOMP_POLICY += $(BOARD_PATH)/seccomp_policy
+#BOARD_SECCOMP_POLICY += $(BOARD_PATH)/seccomp_policy
 
 # for offmode charging
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
